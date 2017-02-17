@@ -54,7 +54,10 @@ class QuestionTree:
             return self.add_answer(old_node)
         return new_question
         
+# use the built-in shelve module to save our tree object to
+# memory so we can save/load it easily between games.
 import shelve
+
 savefile = shelve.open("twenty_questions.save")
 if "tree" in savefile:
     twenty_questions = savefile["tree"]
