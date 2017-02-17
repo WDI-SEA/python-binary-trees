@@ -1,7 +1,4 @@
 class TreeNode:
-    left = None
-    right = None
-
     def __init__(self, data, left=None, right=None):
         self.data = data
         self.left = left
@@ -74,7 +71,7 @@ class BinaryTree:
         if self.root is None:
             self.root = TreeNode(data)
         else:
-            self.add_helper(self.root, data)        
+            self.add_helper(self.root, data)
 
     def add_helper(self, node, data):
         if data <= node.data:
