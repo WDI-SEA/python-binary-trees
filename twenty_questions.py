@@ -54,11 +54,17 @@ class QuestionTree:
             return self.add_answer(old_node)
         return new_question
         
-twenty_questions = QuestionTree()
+import shelve
+savefile = shelve.open("twenty_questions.save")
+if "tree" in savefile:
+    twenty_questions = savefile["tree"]
+else:
+    twenty_questions = QuestionTree()
+    
 twenty_questions.play_game()
-
 keep_playing = True
 while keep_playing:
+    savefile["tree"] = twenty_questions
     response = input("do you want to play again? ")
     if response == "y":
       twenty_questions.play_game()
@@ -67,3 +73,5 @@ while keep_playing:
       keep_playing = False
     else:
         print("I'm sorry I didn't understand you. enter y/n")
+        
+savefile.close()
